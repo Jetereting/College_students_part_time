@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 手机适配-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <!--网页小图标start-->
+    <link rel="shortcut icon" type="image/x-icon" href="http://eiyou.us/images/icon.png" media="screen"/>
+    <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
+    <!--网页小图标end-->
+    <title>用户登录</title>
+    <style>
+        @import "css/Au.css";
+        /*电脑屏幕*/
+        @media (orientation:landscape) {
+            nav{
+                background: rgba(186, 134, 49, 1);
+            }
+            form {
+                position: absolute;
+                top: 15%;
+                left: 55%;
+            }
+        }
+        /*手机屏幕*/
+        @media (orientation:portrait) {
+            input[value="登录"]{
+                transform: translate(-23%,0);
+            }
+        }
+    </style>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+//            确定招聘者还是应聘者
+            $("select[name='who']").blur(function(){
+                if($("select[name='who']").val() == "null"){
+                    alert("请选择类型！")
+                }
+            });
+            $("input[type='submit']").click(function(){
+                if($("select[name='who']").val() == "null"){
+                    alert("请选择类型！")
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+<nav>
+    <project_title>
+        大学生兼职
+    </project_title>
+    <title>
+        用户登录
+    </title>
+</nav>
+<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no" style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
+<form action="" style="margin: 4%;line-height: 33px;">
+    <table style="display: inline-table">
+        <tr>
+            <td>
+                <span>用户名：</span>
+            </td>
+            <td>
+                <input type="text" name="name">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>密码：</span>
+            </td>
+            <td>
+                <input type="password" name="password">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>类型：</span>
+            </td>
+            <td>
+                <select name="who">
+                    <option value="null"></option>
+                    <option value="interviewee">----------------兼职者----------------</option>
+                    <option value="interviewer">----------------招聘者----------------</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="登录"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

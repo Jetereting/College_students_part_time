@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 手机适配-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <!--网页小图标start-->
+    <link rel="shortcut icon" type="image/x-icon" href="http://eiyou.us/images/icon.png" media="screen"/>
+    <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
+    <!--网页小图标end-->
+    <title>选择学校</title>
+    <style>
+        @import "css/Au.css";
+        /*单选按钮样式*/
+        input[type='radio']{
+            opacity: 0;
+        }
+        /*选择框 start */
+        .search{
+            position: absolute;
+            top: 25%;
+            left: 49%;
+        }
+        .inputbox {
+            height: 50px;
+            width: 300px;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .list{
+            position: absolute;
+            top: 77%;
+            transform: translate(-45%, 0);
+            font-size: 16px;
+            padding: 1%;
+            margin: 1%;
+            color: #088506;
+        }
+
+        .inputbox input {
+            width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            font-size: 16px;
+            padding: 16.5px 0;
+            border: 0;
+            background: none;
+            width: 50px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            border-radius: 100%;
+            -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
+            transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
+            -webkit-transition-delay: 0s, 0.4s, 0s;
+            transition-delay: 0s, 0.4s, 0s;
+            box-shadow: 0 0 0 1px currentColor;
+            color: inherit;
+            cursor: pointer;
+            padding: 16.5px 0;
+            padding-right: 50px;
+            font-weight: lighter;
+            font-family: 'Roboto';
+        }
+
+        .inputbox input:focus,
+        .inputbox input:valid {
+            width: 100%;
+            -webkit-transition-delay: 0.4s, 0s, 0.4s;
+            transition-delay: 0.4s, 0s, 0.4s;
+            outline: 0;
+            border-radius: 0;
+            cursor: text;
+            padding-left: 16.5px;
+        }
+
+        .inputbox input:focus + .del,
+        .inputbox input:valid + .del {
+            pointer-events: all;
+            left: calc(100% - 25px);
+            -webkit-transition-delay: 0.4s;
+            transition-delay: 0.4s;
+        }
+
+        .inputbox input:focus + .del:focus,
+        .inputbox input:valid + .del:focus {
+            box-shadow: 0 0 0 1px currentColor;
+            height: 37.5px;
+            width: 37.5px;
+        }
+
+        .inputbox input:focus + .del:before,
+        .inputbox input:valid + .del:before {
+            -webkit-transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
+            -ms-transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
+            transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+        }
+
+        .inputbox input:focus + .del:after,
+        .inputbox input:valid + .del:after {
+            -webkit-transform: translate(-50%, -50%) rotate(45deg) scaleY(0.7);
+            -ms-transform: translate(-50%, -50%) rotate(45deg) scaleY(0.7);
+            transform: translate(-50%, -50%) rotate(45deg) scaleY(0.7);
+            -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+
+        .inputbox .del {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            height: 50px;
+            width: 50px;
+            padding: 0;
+            background: none;
+            border-radius: 100%;
+            border: 0;
+            pointer-events: none;
+            -webkit-transition: left 0.4s ease-in-out;
+            transition: left 0.4s ease-in-out;
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .inputbox .del:focus {
+            outline: none;
+        }
+
+        .inputbox .del:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: currentColor;
+            width: 1px;
+            height: 37.5px;
+            -webkit-transform: translate(32.25px, 32.25px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
+            -ms-transform: translate(32.25px, 32.25px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
+            transform: translate(32.25px, 32.25px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
+            -webkit-transition: -webkit-transform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out;
+            -webkit-transition-delay: 0.6s;
+            transition-delay: 0.6s;
+        }
+
+        .inputbox .del:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: currentColor;
+            width: 1px;
+            height: 37.5px;
+            -webkit-transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
+            -ms-transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
+            transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
+            -webkit-transition: -webkit-transform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out;
+            -webkit-transition-delay: 0.4s;
+            transition-delay: 0.4s;
+        }
+
+        /*选择框 end */
+        input[type='radio'] {
+            display: block;
+        }
+
+        /*电脑屏幕*/
+        @media (orientation: landscape) {
+            nav {
+                background: rgba(186, 134, 49, 1);
+            }
+
+            .search {
+                position: absolute;
+                top: 25%;
+                left: 72%;
+            }
+        }
+
+    </style>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button[type='reset']").click(function () {
+                $(".inputbox>input").val("");
+            });
+
+            $("#select").bind("propertychange input",function(){
+                $("label").hide().filter(":contains('" +$("#select").val() + "')").show();
+            });
+            $("input[name=school]").bind("click",function(){
+                location.href="sign_up.html?school="+$("input[name='school']:checked").val();
+            })
+
+        })
+    </script>
+</head>
+<body>
+<nav>
+    <project_title>
+        大学生兼职
+    </project_title>
+    <title>
+        选择学校
+    </title>
+</nav>
+<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+        style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
+<div class="search">
+    <div class="inputbox">
+        <input id="select" required="required"/>
+        <button type="reset" class="del"></button>
+    </div>
+    <div class="list">
+        <label><input type="radio" name="school" value="青岛科技大学">青岛科技大学</label>
+        <label><input type="radio" name="school" value="青岛科技小学">青岛科技小学</label>
+        <label><input type="radio" name="school" value="青岛科技幼儿园">青岛科技幼儿园</label>
+        <label><input type="radio" name="school" value="青岛科技托儿所">青岛科技托儿所</label>
+        <label><input type="radio" name="school" value="青岛科技育儿所">青岛科技育儿所</label>
+        <label><input type="radio" name="school" value="青岛科技大学">青岛科技大学</label>
+        <label><input type="radio" name="school" value="青岛科技大学">青岛科技大学</label>
+        <label><input type="radio" name="school" value="青岛科技大学">青岛科技大学</label>
+    </div>
+</div>
+
+</body>
+</html>
