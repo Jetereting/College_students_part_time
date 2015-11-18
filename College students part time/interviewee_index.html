@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- 手机适配-->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <!--网页小图标start-->
     <link rel="shortcut icon" type="image/x-icon" href="http://eiyou.us/images/icon.png" media="screen"/>
     <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
@@ -11,12 +11,50 @@
     <title>应聘者主页</title>
     <style>
         @import "css/Au.css";
+        :root{
+            overflow-x:hidden;
+        }
+
+        nav {
+            position: fixed;
+            z-index: 99;
+        }
+        /*电脑屏幕*/
+        @media (orientation:landscape) {
+            ad_image{
+                position: absolute;
+                left: 73%;
+                width: 30%;
+            }
+            info{
+                position: absolute;
+                top: 27%;
+                left: 58%;
+            }
+            info_short{
+                width: 30%;
+                height: 17%;
+            }
+            hr{
+                width: 29.7%;
+            }
+        }
     </style>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script>
+        var i = 1;
+        function ad_change() {
+            var url = "url(images/ad/" + i + ".png)";
+            $("ad_image").css({"background-image": url});
+            i++;
+            if (i == 4) {
+                i = 1;
+            }
+        }
         $(document).ready(function () {
-
-        })
+            setInterval("ad_change()", 2222);
+            $("info_short").after("<hr>")
+        });
     </script>
 </head>
 <body>
@@ -24,10 +62,101 @@
     <project_title>
         大学生兼职
     </project_title>
+
+    <avatar>
+    </avatar>
+
     <title>
         兼职者主页
     </title>
 </nav>
+
+<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no" style="position: fixed; top:9%; left: 7%; width: 650px; height:630px"></iframe>
+
+<ad_image>
+</ad_image>
+
+
+<info>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+    <info_short>
+        <img src="images/avatar.jpg">
+        <title>招收传菜工</title>
+        <price>10元/小时</price>
+        <content>负责传菜到婚礼现场</content>
+        <time>12:00~14:00</time>
+    </info_short>
+
+</info>
 
 </body>
 </html>

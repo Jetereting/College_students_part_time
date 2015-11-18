@@ -36,6 +36,57 @@ input[type='button'],input[type='submit']{
 input[type='button']:hover,input[type='button']:focus,input[type='submit']:hover,input[type='submit']:focus{
     color: #333;
 }
+hr{
+    border:2px solid rgba(59, 102, 255, 0.56);
+}
+info{
+    position: absolute;
+    transform: translate(0,50px);
+    top: 27%;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+info_short{
+    display: block;
+    width: 100%;
+    height: 20%;
+    background: rgba(160, 220, 232, 0.55);
+}
+info_short>img{
+    width: 22%;
+    height: 88%;
+    margin: 2%;
+    transform: translate(-165%,0);
+}
+info_short>title{
+    display: block;
+    font-size: 1.7em;
+    transform: translate(-8%,-450%);
+}
+info_short>price{
+    display: block;
+    font-size: 1.3em;
+    transform: translate(20%,-600%);
+}
+info_short>content{
+    display: block;
+    font-size: 1.4em;
+    transform: translate(3%,-510%);
+}
+info_short>time{
+    display: block;
+    font-size: 1.1em;
+    transform: translate(35%,-550%);
+}
+ad_image{
+    position: absolute;
+    transform: translate(-50%,50px);
+    width: 100%;
+    height: 27%;
+    background: url(../images/avatar.jpg) no-repeat center;
+    background-size: 100% 100%;
+}
 /*手机*/
 @media (orientation:portrait) {
     nav {
@@ -51,6 +102,16 @@ input[type='button']:hover,input[type='button']:focus,input[type='submit']:hover
     }
     nav>project_title{
         display: none;
+    }
+    nav>avatar{
+        margin-left: 1%;
+        display: block;
+        width: 50px;
+        height: 100%;
+        position: absolute;
+        border-radius:27px ;
+        background: url(../images/avatar.jpg) no-repeat center;
+        background-size: 100% 100%;
     }
     .computer{
         display: none;
