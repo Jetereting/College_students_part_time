@@ -3,23 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <!-- 手机适配-->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <!--网页小图标start-->
     <link rel="shortcut icon" type="image/x-icon" href="http://eiyou.us/images/icon.png" media="screen"/>
     <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
     <!--网页小图标end-->
-    <title>应聘者信息编辑</title>
+    <title>应聘者信息</title>
+    <link rel="stylesheet" href="css/Au.css" type="text/css">
     <style>
-        @import "css/Au.css";
+
+        info {
+            position: absolute;
+            top: 0;
+        }
+
+        line > div {
+            text-align: left;
+            margin-left: 10%;
+        }
+
+        avatar {
+            position: absolute;
+            left: 43%;
+            top: 6%;
+            width: 50px;
+            height: 50px;
+            border-radius: 27px;
+            background: url(images/avatar.jpg) no-repeat center;
+            background-size: 100% 100%;
+        }
+        avatarEdit{
+            position: absolute;
+            left: 45%;
+            top: 5%;
+            width: 50px;
+            height: 60px;
+            background: url(images/avatarEdit.png) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        #verifyCodeBtn{
+            background: tan;
+            border: 1px solid #e6ff00;
+        }
+
+        /*电脑屏幕*/
+        @media (orientation: landscape) {
+            info {
+                position: absolute;
+                left: 57%;
+                width: 30%;
+            }
+        }
     </style>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script>
         $(document).ready(function () {
-
-        })
+//            显示用户头像
+            $("avatar").css({"background": "url(images/avatar.jpg) no-repeat center", "background-size": "100% 100%"});
+//            显示用户性别
+            $("sex").css({
+                "background": " url(images/boy.png) no-repeat center",
+                "background-size": "100% 100%",
+                "left": "calc(14% + " + ($("name").width() + 52) + "px)"
+            })
+        });
     </script>
 </head>
 <body>
+<nav>
+    <project_title>
+        大学生兼职
+    </project_title>
 
+    <title>
+        用户信息
+    </title>
+
+</nav>
+<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+        style="position: fixed; top:9%; left: 7%; width: 650px; height:630px"></iframe>
+
+<info>
+    <line>
+        <avatar></avatar>
+        <avatarEdit></avatarEdit>
+    </line>
+    <hr>
+    <line>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+    </line>
+    <line>
+        <div>&nbsp;</div>
+        <div>昵&nbsp;&nbsp;称：<input type="text" placeholder="起个好听点的名字"></div>
+    </line>
+    <line>
+        <div>&nbsp;</div>
+        <div>性&nbsp;&nbsp;别：<select name="sex">
+            <option value="0">-------------------男-----------------</option>
+            <option value="1">-------------------女-----------------</option>
+        </select></div>
+    </line>
+    <line>
+        <div>&nbsp;</div>
+        <div>学&nbsp;&nbsp;校：<input type="text" placeholder="点击选择"></div>
+    </line>
+
+
+    <line>
+        <div>&nbsp;</div>
+        <div>学&nbsp;&nbsp;号：<input type="text" placeholder="大学的学号"></div>
+    </line>
+
+    <line>
+        <div>&nbsp;</div>
+        <div>手机&nbsp;号：<input type="text" placeholder="常用手机号"></div>
+    </line>
+    <line>
+        <div>&nbsp;</div>
+        <div>验证&nbsp;码：<input id="verifyCode" type="text" style="width: 100px"><input id="verifyCodeBtn" type="button" value="获取验证码">
+        </div>
+    </line>
+
+    <line>
+        <div>&nbsp;</div>
+        <div style="text-align: center"><input type="button" value="保存修改"></div>
+        <div>&nbsp;</div>
+    </line>
+</info>
 </body>
 </html>

@@ -1,17 +1,13 @@
 /**
- * Created by Au on 2015/11/18.
+ * Created by Au on 2015/12/4.
  */
-function request(paras){
-    var url = location.href;
-    var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
-    var paraObj = {}
-    for (var i=0; j=paraString[i]; i++){
-        paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
-    }
-    var returnValue = paraObj[paras.toLowerCase()];
-    if(typeof(returnValue)=="undefined"){
-        return "";
-    }else{
-        return returnValue;
-    }
+function resizeWindowsToPhone(url) {
+//打开一个新窗口并设置其大小
+    window.open(url, '', 'width=450,height=750,location=no,menubar=no,status=no,toolbar=no');
+//    window.open(url, '', 'width=450,height=750');
+//不询问是否关闭
+    window.opener = null;
+    window.open('', '_self');
+//关闭自己的窗口
+    window.close();
 }

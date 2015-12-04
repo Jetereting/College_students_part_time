@@ -2,24 +2,127 @@
 <html lang="en">
 <head>
     <!-- 手机适配-->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <!--网页小图标start-->
     <link rel="shortcut icon" type="image/x-icon" href="http://eiyou.us/images/icon.png" media="screen"/>
     <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
     <!--网页小图标end-->
     <meta charset="UTF-8">
     <title>长招聘信息</title>
+    <link rel="stylesheet" href="css/Au.css" type="text/css">
     <style>
-        @import "css/Au.css";
+        * {
+            text-align: left;
+        }
+
+        html, body {
+            height: 100%;
+        }
+        img {
+            width: 100%;
+            height: 43%;
+        }
+
+        title {
+            font-size: 2.3em;
+            display: block;
+        }
+        info{
+            position: absolute;
+            top: 0;
+        }
+        span {
+            margin: 1% 0 0 2%;
+        }
+
+        hr {
+            margin-top: 1%;
+            margin-bottom: 1%;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 27px;
+            background: url(images/avatar.jpg) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        .map {
+            text-align: right;
+            width: 55px;
+            height: 45px;
+            background: url(images/map.png) no-repeat center;
+            background-size: 100% 100%;
+        }
+        /*电脑屏幕*/
+        @media (orientation: landscape) {
+            info{
+                left: 57%;
+                overflow-x: hidden;
+                width: 30%;
+            }
+
+        }
+        /*手机屏幕*/
+        @media (orientation: portrait) {
+
+        }
     </style>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script>
         $(document).ready(function () {
-
-        })
+            $("back").click(function () {
+                window.history.go(-1);
+            });
+        });
     </script>
 </head>
 <body>
+<nav>
+    <back></back>
+    <project_title>
+        大学生兼职
+    </project_title>
+    <title>
+        兼职信息
+    </title>
+</nav>
 
+<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+        style="position: fixed; top:9%; left: 7%; width: 650px; height:630px"></iframe>
+
+<info>
+    <img src="images/ad/1.png">
+    <hr>
+    <span>工资：</span>
+    <br>
+    <span>日期：</span>
+    <br>
+    <span>时间：</span>
+    <br>
+    <span>地点：</span>
+    <br>
+    <span>人数：/</span>
+    <hr>
+    <span>发布者：</span>
+    <br>
+    <span>信用分：</span>
+    <hr>
+
+    <span>详细地址：</span>
+    <img class="map" src="images/map.png">
+
+    <hr>
+    <span>报名同学：</span>
+    <br>
+    <label style="margin: 2%"></label><img class="avatar" src="">
+    <img class="avatar" src="">
+    <img class="avatar" src="">
+    <img class="avatar" src="">
+    <hr>
+
+    <input type="submit" value="报名" style="position: absolute;left: 50%;margin: 4% 0 0 -48px">
+</info>
 </body>
 </html>

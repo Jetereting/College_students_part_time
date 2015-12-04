@@ -1,49 +1,75 @@
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <!-- 手机适配-->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <!--网页小图标start-->
     <link rel="shortcut icon" type="image/x-icon" href="http://eiyou.us/images/icon.png" media="screen"/>
     <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
     <!--网页小图标end-->
     <title>用户登录</title>
+    <link href="css/Au.css" type="text/css" rel="stylesheet">
     <style>
-        @import "css/Au.css";
+        nav{
+            position: static;
+        }
         /*电脑屏幕*/
-        @media (orientation:landscape) {
-            nav{
+        @media (orientation: landscape) {
+            nav {
                 background: rgba(186, 134, 49, 1);
             }
+
             form {
                 position: absolute;
                 top: 15%;
                 left: 55%;
             }
         }
+
         /*手机屏幕*/
-        @media (orientation:portrait) {
+        @media (orientation: portrait) {
+            #sign_up{
+                display: block;
+                transform: translate(-12%, 0);
+            }
             input[value="登录"]{
-                transform: translate(-23%,0);
+                transform: translate(-23%, 0);
             }
         }
     </style>
     <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/Au.js"></script>
     <script>
+        //            提交初检测
+        function check() {
+            if ($("input[name='name']").val() == null || $("input[name='name']").val() == "") {
+                alert("请输入用户名");
+                $("input[name='name']").focus();
+                return false;
+            } else if ($("input[name='password']").val() == null || $("input[name='password']").val() == "") {
+                alert("请输入密码");
+                $("input[name='password']").focus();
+                return false;
+            } else if ($("select[name='who']").val() == "null") {
+                alert("请选择类型！");
+                $("select[name='who']").focus();
+                return false;
+            } else {
+                return true;
+            }
+        }
         $(document).ready(function () {
-//            确定招聘者还是应聘者
-            $("select[name='who']").blur(function(){
-                if($("select[name='who']").val() == "null"){
-                    alert("请选择类型！")
+//            确定form的action
+            $("select[name=who]").click(function () {
+                if ($("select[name=who]").val() == "interviewee") {
+                    resizeWindowsToPhone('interviewee_index.html');
+                } else if ($("select[name=who]").val() == "interviewer") {
+                    resizeWindowsToPhone('interviewer_index.html');
                 }
             });
-            $("input[type='submit']").click(function(){
-                if($("select[name='who']").val() == "null"){
-                    alert("请选择类型！")
-                }
-            });
-        })
+        });
     </script>
 </head>
 <body>
@@ -55,15 +81,16 @@
         用户登录
     </title>
 </nav>
-<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no" style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
-<form action="interviewee_index.html" method="post" style="margin: 4%;line-height: 33px;">
+<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+        style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
+<form action="" method="post" style="margin: 4%;line-height: 33px;" name="form" onsubmit="return check();">
     <table style="display: inline-table">
         <tr>
             <td>
                 <span>用户名：</span>
             </td>
             <td>
-                <input type="text" name="name">
+                <input type="text" name="name" placeholder="用户名/手机号">
             </td>
         </tr>
         <tr>
@@ -71,7 +98,7 @@
                 <span>密码：</span>
             </td>
             <td>
-                <input type="password" name="password">
+                <input type="password" name="password" placeholder="密码">
             </td>
         </tr>
         <tr>
@@ -94,7 +121,13 @@
             <td><input type="submit" value="登录"></td>
             <td></td>
         </tr>
+        <tr>
+            <td></td>
+            <td><a id="sign_up" href="sign_up.html">立即注册</a></td>
+            <td></td>
+        </tr>
     </table>
 </form>
 </body>
 </html>
+

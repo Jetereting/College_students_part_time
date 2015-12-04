@@ -1,27 +1,33 @@
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <!-- 手机适配-->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <!--网页小图标start-->
     <link rel="shortcut icon" type="image/x-icon" href="http://eiyou.us/images/icon.png" media="screen"/>
     <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
     <!--网页小图标end-->
     <title>用户注册</title>
+    <link rel="stylesheet" href="css/Au.css" type="text/css">
+    <link rel="stylesheet" href="css/school_search.css">
     <style>
-        @import "css/Au.css";
-
+        nav{
+            position: static;
+        }
         /*电脑屏幕*/
-        @media (orientation:landscape) {
-            nav{
+        @media (orientation: landscape) {
+            nav {
                 background: rgba(186, 134, 49, 1);
             }
+
             form {
                 position: absolute;
                 top: 15%;
                 left: 55%;
             }
+
             /*选择学校*/
             .search {
                 position: absolute;
@@ -29,176 +35,63 @@
                 transform: translate(104%, 0);
             }
         }
+
         /*手机屏幕*/
-        @media (orientation:portrait) {
+        @media (orientation: portrait) {
+            #sign_in{
+                display: block;
+                transform: translate(-12%, 0);
+            }
             input[value="注册"]{
-                transform: translate(-23%,0);
+                transform: translate(-23%, 0);
             }
         }
-        /*单选按钮样式*/
-        input[type='radio']{
-            opacity: 0;
-            display: block;
-        }
-        /*选择框 start */
-        .search{
-            position: absolute;
-            top: 25%;
-            left: 49%;
-        }
-        .inputbox {
-            height: 50px;
-            width: 300px;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
-        .list{
-            position: absolute;
-            top: 77%;
-            transform: translate(-45%, 0);
-            font-size: 16px;
-            padding: 1%;
-            margin: 1%;
-            color: #088506;
-        }
 
-        .inputbox input {
-            width: 100%;
-            min-width: 0;
-            box-sizing: border-box;
-            font-size: 16px;
-            padding: 16.5px 0;
-            border: 0;
-            background: none;
-            width: 50px;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            -webkit-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
-            border-radius: 100%;
-            -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
-            transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
-            -webkit-transition-delay: 0s, 0.4s, 0s;
-            transition-delay: 0s, 0.4s, 0s;
-            box-shadow: 0 0 0 1px currentColor;
-            color: inherit;
-            cursor: pointer;
-            padding: 16.5px 0;
-            padding-right: 50px;
-            font-weight: lighter;
-            font-family: 'Roboto';
-        }
-
-        .inputbox input:focus,
-        .inputbox input:valid {
-            width: 100%;
-            -webkit-transition-delay: 0.4s, 0s, 0.4s;
-            transition-delay: 0.4s, 0s, 0.4s;
-            outline: 0;
-            border-radius: 0;
-            cursor: text;
-            padding-left: 16.5px;
-        }
-
-        .inputbox input:focus + .del,
-        .inputbox input:valid + .del {
-            pointer-events: all;
-            left: calc(100% - 25px);
-            -webkit-transition-delay: 0.4s;
-            transition-delay: 0.4s;
-        }
-
-        .inputbox input:focus + .del:focus,
-        .inputbox input:valid + .del:focus {
-            box-shadow: 0 0 0 1px currentColor;
-            height: 37.5px;
-            width: 37.5px;
-        }
-
-        .inputbox input:focus + .del:before,
-        .inputbox input:valid + .del:before {
-            -webkit-transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
-            -ms-transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
-            transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
-            -webkit-transition-delay: 0s;
-            transition-delay: 0s;
-        }
-
-        .inputbox input:focus + .del:after,
-        .inputbox input:valid + .del:after {
-            -webkit-transform: translate(-50%, -50%) rotate(45deg) scaleY(0.7);
-            -ms-transform: translate(-50%, -50%) rotate(45deg) scaleY(0.7);
-            transform: translate(-50%, -50%) rotate(45deg) scaleY(0.7);
-            -webkit-transition-delay: 0.2s;
-            transition-delay: 0.2s;
-        }
-
-        .inputbox .del {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            height: 50px;
-            width: 50px;
-            padding: 0;
-            background: none;
-            border-radius: 100%;
-            border: 0;
-            pointer-events: none;
-            -webkit-transition: left 0.4s ease-in-out;
-            transition: left 0.4s ease-in-out;
-            -webkit-transition-delay: 0s;
-            transition-delay: 0s;
-            color: inherit;
-            cursor: pointer;
-        }
-
-        .inputbox .del:focus {
-            outline: none;
-        }
-
-        .inputbox .del:before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            background: currentColor;
-            width: 1px;
-            height: 37.5px;
-            -webkit-transform: translate(32.25px, 32.25px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
-            -ms-transform: translate(32.25px, 32.25px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
-            transform: translate(32.25px, 32.25px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
-            -webkit-transition: -webkit-transform 0.2s ease-in-out;
-            transition: transform 0.2s ease-in-out;
-            -webkit-transition-delay: 0.6s;
-            transition-delay: 0.6s;
-        }
-
-        .inputbox .del:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            background: currentColor;
-            width: 1px;
-            height: 37.5px;
-            -webkit-transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
-            -ms-transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
-            transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
-            -webkit-transition: -webkit-transform 0.2s ease-in-out;
-            transition: transform 0.2s ease-in-out;
-            -webkit-transition-delay: 0.4s;
-            transition-delay: 0.4s;
-        }
     </style>
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/Au.js"></script>
     <script>
+//        <%--输入初检测--%>
+        function check() {
+            if ($("input[name='name']").val() == null || $("input[name='name']").val() == "") {
+                alert("用户名不能为空！");
+                $("input[name='name']").focus();
+                return false;
+            } else if ($("input[name='password']").val() == null || $("input[name='password']").val() == "") {
+                alert("密码不能为空！");
+                $("input[name='password']").focus();
+                return false;
+            } else if ($("input[name='re_password']").val() != $("input[name='password']").val()) {
+                alert("两次密码输入不一致！");
+                $("input[name='password']").focus();
+                return false;
+            } else if ($("input[name='phone']").val().length != 11) {
+                alert("手机号格式不正确！");
+                $("input[name='phone']").focus();
+                return false;
+            } else if ($("select[name='who']").val() == "null") {
+                alert("请选择类型！");
+                $("input[name='who']").focus();
+                return false;
+            } else if ($("select[name='who']").val() == "interviewee" && $("input[name='id']").val().length != 15 && $("input[name='id']").val().length != 18) {
+                alert("身份证号不正确！");
+                $("input[name='id']").focus();
+                return false;
+            } else if ($("select[name='who']").val() == "interviewee" && $("input[name='school']").val() == null || $("input[name='school']").val() == "") {
+                alert("学校未选择");
+                $("input[name='school']").focus();
+                return false;
+            } else if ($("select[name='who']").val() == "interviewee" && $("input[name='school_id']").val() == null || $("input[name='school_id']").val() == "") {
+                alert("学号未填写");
+                $("input[name='school_id']").focus();
+                return false;
+            } else if ($("select[name='who']").val() == "interviewer" && $("input[name='business_no").val() == null || $("input[name='business_no").val() == "") {
+                alert("工商账号不能为空");
+                $("input[name='business_no']").focus();
+                return false;
+            } else {
+                return true;
+            }
+        }
         $(document).ready(function () {
             $(".search").hide();
 //            确定招聘者还是应聘者
@@ -208,50 +101,19 @@
                 if ($("select[name='who']").val() == "interviewee") {
                     $(".interviewee").show();
                     $(".interviewer").hide();
-                } else if($("select[name='who']").val() == "interviewer"){
+                    //      form提交
+                    document.form.action = "<%=request.getContextPath()%>/servlet/IntervieweeSignUpAction"
+                } else if ($("select[name='who']").val() == "interviewer") {
                     $(".interviewer").show();
                     $(".interviewee").hide();
-                }else{
+                    //      form提交
+                    document.form.action = "<%=request.getContextPath()%>/servlet/InterviewerSignUpAction"
+                } else {
                     $(".interviewer").hide();
                     $(".interviewee").hide();
                 }
-            }).blur(function(){
-                if($("select[name='who']").val() == "null"){
-                    alert("请选择类型！")
-                }
             });
-//            用户名初检测
-            $("input[name='name']").blur(function () {
-                if ($("input[name='name']").val() == null || $("input[name='name']").val() == "") {
-                    alert("用户名不能为空！")
-                }
-            });
-//            密码初确认
-            $("input[name='re_password']").blur(function () {
-                if ($("input[name='re_password']").val() != $("input[name='password']").val()) {
-                    alert("两次密码输入不一致！");
-                }
-            });
-//            手机号初检测
-            $("input[name='phone']").blur(function () {
-                if ($("input[name='phone']").val().length != 11) {
-                    alert("手机号格式不正确！")
-                }
-            });
-//            身份证号初检测
-            $("input[name='id']").blur(function () {
-                if ($("input[name='id']").val().length != 15 && $("input[name='id']").val().length != 18) {
-                    alert("身份证号不正确！")
-                }
-            });
-//            submit再检测
-            $("input[type='submit']").click(function(){
-                if($("select[name='who']").val() == "null"){
-                    alert("请选择类型！")
-                }
-            });
-//            选择学校
-            $("input[name='school']").click(function(){
+            $("input[name='school']").click(function () {
                 $("form").hide();
                 $(".search").show();
                 $("title").text("选择学校");
@@ -261,10 +123,10 @@
                 $(".inputbox>input").val("");
             });
 
-            $("#select").bind("propertychange input",function(){
-                $("label").hide().filter(":contains('" +$("#select").val() + "')").show();
+            $("#select").bind("propertychange input", function () {
+                $("label").hide().filter(":contains('" + $("#select").val() + "')").show();
             });
-            $("input[name=school_select]").bind("click",function(){
+            $("input[name=school_select]").bind("click", function () {
                 $(".search").hide();
                 $("form").show();
                 $("title").text("用户注册");
@@ -282,15 +144,16 @@
         用户注册
     </title>
 </nav>
-<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no" style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
-<form action="" style="margin: 4%;line-height: 33px;">
+<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+        style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
+<form action="" method="post" style="margin: 4%;line-height: 33px;" name="form" onsubmit="return check();">
     <table style="display: inline-table">
         <tr>
             <td>
                 <span>用户名：</span>
             </td>
             <td>
-                <input type="text" name="name">
+                <input type="text" name="name" placeholder="用户名">
             </td>
         </tr>
         <tr>
@@ -298,7 +161,7 @@
                 <span>密码：</span>
             </td>
             <td>
-                <input type="password" name="password">
+                <input type="password" name="password" placeholder="密码">
             </td>
         </tr>
         <tr>
@@ -306,7 +169,7 @@
                 <span>确认密码：</span>
             </td>
             <td>
-                <input type="password" name="re_password">
+                <input type="password" name="re_password" placeholder="确认你的密码">
             </td>
         </tr>
         <tr>
@@ -314,7 +177,7 @@
                 <span>手机号：</span>
             </td>
             <td>
-                <input type="number" name="phone">
+                <input type="number" name="phone" placeholder="你的常用手机号">
             </td>
         </tr>
         <tr>
@@ -345,7 +208,7 @@
                 <span>身份证：</span>
             </td>
             <td>
-                <input type="text" name="id">
+                <input type="text" name="id" placeholder="一旦注册，不可更改！">
             </td>
         </tr>
         <tr class="interviewee">
@@ -353,7 +216,7 @@
                 <span>学校：</span>
             </td>
             <td>
-                <input type="text" name="school">
+                <input type="text" name="school" placeholder="点我选择">
             </td>
         </tr>
         <tr class="interviewee">
@@ -361,7 +224,7 @@
                 <span>学号：</span>
             </td>
             <td>
-                <input type="text" name="school_id">
+                <input type="text" name="school_id" placeholder="在大学的学号">
             </td>
         </tr>
         <tr class="interviewer">
@@ -369,7 +232,7 @@
                 <span>工商账号：</span>
             </td>
             <td>
-                <input type="number" name="business_no">
+                <input type="number" name="business_no" placeholder="工商账号">
             </td>
         </tr>
 
@@ -381,8 +244,14 @@
             <td><input type="submit" value="注册"></td>
             <td></td>
         </tr>
+        <tr>
+            <td></td>
+            <td><a id="sign_in" href="sign_in.html">登录</a></td>
+            <td></td>
+        </tr>
     </table>
 </form>
+
 <div class="search">
     <div class="inputbox">
         <input id="select" required="required"/>

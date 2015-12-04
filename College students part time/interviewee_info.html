@@ -3,23 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <!-- 手机适配-->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <!--网页小图标start-->
     <link rel="shortcut icon" type="image/x-icon" href="http://eiyou.us/images/icon.png" media="screen"/>
     <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
     <!--网页小图标end-->
     <title>应聘者信息</title>
+    <link rel="stylesheet" href="css/Au.css" type="text/css">
     <style>
-        @import "css/Au.css";
+
+        info{
+            position: absolute;
+            top: 0;
+        }
+        line>div{
+            text-align: left;
+            margin-left: 13%;
+        }
+
+        avatar {
+            position: absolute;
+            left: 12%;
+            top: 6%;
+            width: 50px;
+            height: 50px;
+            border-radius: 27px;
+            background: url(images/avatar.jpg) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        name {
+            position: absolute;
+            left: calc(14% + 50px);
+            top: 6%;
+        }
+
+        phone {
+            position: absolute;
+            left: calc(14% + 50px);
+            top: calc(6% + 30px);
+        }
+
+        sex {
+            position: absolute;
+            top: 6%;
+            width: 17px;
+            height: 17px;
+            background: url(images/girl.png) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        school {
+            display: inline;
+        }
+        /*电脑屏幕*/
+        @media (orientation: landscape) {
+            info{
+                position: absolute;
+                left: 57%;
+                width: 30%;
+            }
+        }
     </style>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script>
         $(document).ready(function () {
-
-        })
+//            显示用户头像
+            $("avatar").css({"background": "url(images/avatar.jpg) no-repeat center", "background-size": "100% 100%"});
+//            显示用户性别
+            $("sex").css({
+                "background": " url(images/boy.png) no-repeat center",
+                "background-size": "100% 100%",
+                "left": "calc(14% + " + ($("name").width() + 52) + "px)"
+            })
+        });
     </script>
 </head>
 <body>
+<nav>
+    <project_title>
+        大学生兼职
+    </project_title>
 
+    <title>
+        用户信息
+    </title>
+
+    <edit>
+        编辑
+    </edit>
+</nav>
+<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+        style="position: fixed; top:9%; left: 7%; width: 650px; height:630px"></iframe>
+
+<info>
+    <line>
+        <avatar></avatar>
+        <name>Au</name>
+        <sex></sex>
+        <phone>17096241774</phone>
+    </line>
+    <hr>
+    <line>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+    </line>
+    <hr>
+    <line>
+        <div>&nbsp;</div>
+        <div>学校：</div>
+        <div>&nbsp;</div>
+    </line>
+    <hr>
+    <line>
+        <div>&nbsp;</div>
+        <div>手机号：</div>
+        <div>&nbsp;</div>
+    </line>
+    <hr>
+    <line>
+        <div>&nbsp;</div>
+        <div>身份证号：</div>
+        <div>&nbsp;</div>
+    </line>
+    <hr>
+    <line>
+        <div>&nbsp;</div>
+        <div>学号：</div>
+        <div>&nbsp;</div>
+    </line>
+    <hr>
+    <line>
+        <div>&nbsp;</div>
+        <div style="text-align: center;font-style: oblique">参加过的兼职>></div>
+        <div>&nbsp;</div>
+    </line>
+    <hr>
+    <line>
+        <div>&nbsp;</div>
+        <div style="text-align: center"><input type="button" value="退出登录"></div>
+        <div>&nbsp;</div>
+    </line>
+</info>
 </body>
 </html>
