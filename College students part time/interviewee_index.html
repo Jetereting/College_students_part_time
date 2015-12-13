@@ -68,7 +68,7 @@
             });
 //            短信息点击
             $("info_short").click(function () {
-                resizeWindowsToPhone('info_long.html');
+                window.location.href = 'info_long.html';
             });
         });
     </script>
@@ -87,7 +87,7 @@
     </title>
 </nav>
 
-<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+<iframe class="computer" src="html/turbine.html" frameBorder="0" scrolling="no"
         style="position: fixed; top:9%; left: 7%; width: 650px; height:630px"></iframe>
 
 <ad_image>
@@ -193,8 +193,6 @@
             </div>
         </div>
     </info_short>
-
-
 </info>
 
 </body>

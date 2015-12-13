@@ -17,9 +17,6 @@
         }
         /*电脑屏幕*/
         @media (orientation: landscape) {
-            nav {
-                background: rgba(186, 134, 49, 1);
-            }
 
             form {
                 position: absolute;
@@ -45,15 +42,15 @@
         //            提交初检测
         function check() {
             if ($("input[name='name']").val() == null || $("input[name='name']").val() == "") {
-                alert("请输入用户名");
+                notie.alert(2,"请输入用户名!",1);
                 $("input[name='name']").focus();
                 return false;
             } else if ($("input[name='password']").val() == null || $("input[name='password']").val() == "") {
-                alert("请输入密码");
+                notie.alert(2,"请输入密码!",1);
                 $("input[name='password']").focus();
                 return false;
             } else if ($("select[name='who']").val() == "null") {
-                alert("请选择类型！");
+                notie.alert(2,"请选择类型！",1);
                 $("select[name='who']").focus();
                 return false;
             } else {
@@ -64,9 +61,9 @@
 //            确定form的action
             $("select[name=who]").click(function () {
                 if ($("select[name=who]").val() == "interviewee") {
-                    resizeWindowsToPhone('interviewee_index.html');
+                    document.form.action="interviewee_index.html";
                 } else if ($("select[name=who]").val() == "interviewer") {
-                    resizeWindowsToPhone('interviewer_index.html');
+                    document.form.action="interviewer_index.html";
                 }
             });
         });
@@ -81,7 +78,7 @@
         用户登录
     </title>
 </nav>
-<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+<iframe class="computer" src="html/computer_eye.html" frameBorder="0" scrolling="no"
         style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
 <form action="" method="post" style="margin: 4%;line-height: 33px;" name="form" onsubmit="return check();">
     <table style="display: inline-table">
@@ -128,6 +125,7 @@
         </tr>
     </table>
 </form>
+<script src="js/notie.js"></script>
 </body>
 </html>
 

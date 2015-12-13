@@ -9,13 +9,68 @@
     <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
     <!--网页小图标end-->
     <title>发布兼职</title>
+    <link rel="stylesheet" href="css/Au.css" type="text/css">
     <style>
-        @import "css/Au.css";
-    </style>
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script>
-        $(document).ready(function () {
+        info{
+            position: absolute;
+            top: 7%;
+            transform: translate(33px,23px);
+        }
+        input[type=submit]{
+            margin-top: 12%;
+            transform: translate(-12%,0);
+        }
 
+        /*电脑屏幕*/
+        @media (orientation: landscape) {
+            info {
+                position: absolute;
+                top: 10%;
+                left: 60%;
+                width: 30%;
+            }
+        }
+    </style>
+
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/Au.js"></script>
+    <script src="js/notie.js"></script>
+    <script>
+        function check(){
+            if($("input[name='title']").val()==""||$("input[name='title']").val()==null){
+                notie.alert(2,"标题不能不填哦~",1);
+                $("input[name='title']").focus();
+                return false;
+            }else if($("textarea[name='content']").val()==""||$("textarea[name='content']").val()==null){
+                notie.alert(2,"提点要求么~",1);
+                $("textarea[name='content']").focus();
+                return false;
+            }else if($("input[name='need']").val()==""||$("input[name='need']").val()==null){
+                notie.alert(2,"填一下需要多少人~",1);
+                $("input[name='need']").focus();
+                return false;
+            }else if($("input[name='wages']").val()==""||$("input[name='wages']").val()==null){
+                notie.alert(2,"薪资不能为空~",1);
+                $("input[name='wages']").focus();
+                return false;
+            }else if($("input[name='loc']").val()==""||$("input[name='loc']").val()==null){
+                notie.alert(2,"选一下地址~",1);
+                $("input[name='loc']").focus();
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        $(document).ready(function () {
+//            返回按钮
+            $("back").click(function () {
+                window.history.back();
+            });
+            $("textarea").css({width:$("input:eq(0)").width()});
+            $("input[onfocus='HS_setDate(this)']").css({width:$("input:eq(0)").width()/2.17});
+            $("input[type='number']").css({width:$("input:eq(0)").width()/2.17});
+            $("select").css({width:$("input:eq(0)").width()/2.1});
         });
     </script>
 </head>
@@ -27,10 +82,54 @@
     <title>
         发布兼职
     </title>
+    <back>
+
+    </back>
 </nav>
-<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+<iframe class="computer" src="html/bird.html" frameBorder="0" scrolling="no"
         style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
-
-
+<info>
+    <form action="" method="post" style="margin: 4%;line-height: 33px;" name="form" onsubmit="return check();">
+        <table>
+            <tr>
+                <td>兼职标题：</td>
+                <td><input type="text" name="title" placeholder="请输入兼职标题"></td>
+            </tr>
+            <tr>
+                <td>兼职要求：</td>
+                <td><textarea name="content" placeholder="啥活都能干!"></textarea></td>
+            </tr>
+            <tr>
+                <td>工作日期：</td>
+                <td><input type="text" onfocus="HS_setDate(this)">到<input type="text" onfocus="HS_setDate(this)"></td>
+            </tr>
+            <tr>
+                <td>工作时段：</td>
+                <td><input type="text" onfocus="HS_setDate(this)">到<input type="text" onfocus="HS_setDate(this)"></td>
+            </tr>
+            <tr>
+                <td>招聘人数：</td>
+                <td><input name="need" type="number">&nbsp;&nbsp;&nbsp;&nbsp;人&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+            <tr>
+                <td>工资待遇：</td>
+                <td><input name="wages" type="number">&nbsp;<select><option>元/小时</option><option>元/天</option><option>元/月</option></select></td>
+            </tr>
+            <tr>
+                <td>工作地址：</td>
+                <td><input name="loc" type="text" placeholder="啊 啊 啊 五环 你比四环多一环"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="发布"></td>
+            </tr>
+        </table>
+    </form>
+</info>
+<script src="js/notie.js"></script>
 </body>
 </html>

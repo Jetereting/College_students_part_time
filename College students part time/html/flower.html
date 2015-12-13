@@ -1,0 +1,384 @@
+<style>
+    html,body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #atome {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        height: 100px;
+        width: 100px;
+        -webkit-filter: url("#goo");
+        filter: url("#goo");
+        transition: 1s all;
+    }
+    .w--atome {
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+
+
+
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+
+        -webkit-animation: infinteRotateReverse 8s linear infinite;
+        animation: infinteRotateReverse 8s linear infinite;
+    }
+    .w--atome:after,
+    .w--atome:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 100%;
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+    }
+    .w--atome:after {
+        width: 84%;
+        height: 90%;
+        background-color: rgba(255, 0, 82, 0.3);
+        box-shadow: 6px 0px 60px 15px #441232;
+    }
+    .w--atome:before {
+        width: 10%;
+        height: 9%;
+        background-color: rgba(255, 0, 177, 0.42);
+        box-shadow: 13px 0px 4px 18px #FBFF00;
+
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+
+        -webkit-animation: infinteRotate 8s ease-in-out infinite;
+        animation: infinteRotate 8s ease-in-out infinite;
+    }
+    .w--atome-spine {
+        position: absolute;
+        top: -2px;
+        left: 50%;
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+
+        -webkit-animation: infinteRotate 4s linear infinite;
+        animation: infinteRotate 4s linear infinite;
+    }
+    .w--atome-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -50%;
+        margin: auto;
+        width: 200%;
+        height: 1px;
+    }
+    .w--atome-line:before,
+    .w--atome-line:after {
+        position: absolute;
+        display: block;
+        content: '';
+        height: 10px;
+        width: 10px;
+        border-radius: 100%;
+        background-color: rgb(255, 235, 0);
+        top: -5px;
+        box-shadow: 0px 0px 15px 12px #E400FF;
+        -webkit-filter: blur(2px);
+        filter: blur(2px);
+    }
+    .w--atome-line:before {
+        left: -5px;
+    }
+    .w--atome-line:after {
+        right: -5px;
+    }
+    .lineX {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+
+    .w--atome-circle {
+        width: 100%;
+        height: 300%;
+        border: solid 1px #540042;
+        box-shadow: 3px 6px 0px 1px #FFB4B4;
+        border-radius: 100%;
+        position: absolute;
+        -webkit-filter: blur(0.7px);
+        filter: blur(0.7px);
+        top: -1px;
+        left: -1px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: 0.9;
+        -webkit-animation: infinteShadow 16s linear infinite;
+        animation: infinteShadow 16s linear infinite;
+    }
+    .circle1 {
+
+    }
+    .circle2 {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    .circle3 {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+    .circle4 {
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -ms-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+    }
+
+
+
+    @-webkit-keyframes infinteRotate {
+        0%   {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100%   {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes infinteRotate {
+        0%   {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100%   {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes infinteRotateReverse {
+        0%   {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            -o-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+        }
+    }
+    @keyframes infinteRotateReverse {
+        0%   {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            -o-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+        }
+    }
+    @-webkit-keyframes infinteShadow {
+
+        0%   {
+
+            box-shadow: 3px 6px 0px 1px #FFB4B4;
+        }
+        33%   {
+
+            box-shadow: -3px -6px 0px 1px #FFB4B4;
+        }
+        33%   {
+
+            box-shadow: -3px -6px 0px 1px #FFB4B4;
+        }
+        100%   {
+
+            box-shadow: 3px 6px 0px 1px #FFB4B4;
+        }
+    }
+    @keyframes infinteShadow {
+        0%   {
+
+            box-shadow: 3px 6px 0px 1px #FFB4B4;
+        }
+        33%   {
+
+            box-shadow: -3px -6px 0px 1px #FFB4B4;
+        }
+        33%   {
+
+            box-shadow: -3px -6px 0px 1px #FFB4B4;
+        }
+        100%   {
+
+            box-shadow: 3px 6px 0px 1px #FFB4B4;
+        }
+    }
+
+
+
+
+    .help .w--atome-help  {
+        display: block;
+    }
+    .help .w--atome-spine,
+    .help .w--atome,
+    .help .w--atome:after {
+        border: solid 1px blue;
+    }
+
+    .help .w--atome-line {
+        background-color: blue;
+    }
+    .w--atome-help {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        height: 200%;
+        width: 200%;
+        border-radius: 100%;
+        display: none;
+        border: solid 1px blue;
+    }
+    .w--atome-help .w--atome-line {
+        width: 100%;
+        left: 0;
+        background-color: blue;
+    }
+    .w--atome-help .w--atome-line:before,
+    .w--atome-help .w--atome-line:after {
+        display: none;
+    }
+
+
+    .small #atome {
+        width: 40px;
+        height: 40px;
+    }
+    .small .w--atome {
+        -webkit-animation: infinteRotateReverse 2s linear infinite;
+        animation: infinteRotateReverse 2s linear infinite;
+    }
+    .small .w--atome-spine {
+        -webkit-animation: infinteRotate 1s linear infinite;
+        animation: infinteRotate 1s linear infinite;
+    }
+    .small .w--atome-circle {
+        -webkit-animation: infinteShadow 1s linear infinite;
+        animation: infinteShadow 1s linear infinite;
+    }
+</style>
+<script>
+    /** DAT GUI **/
+    var guiControls = new function(){
+
+        this.help 			= function(){
+
+            if( document.querySelector('.help') )
+                document.body.className = '';
+            else
+                document.body.className = 'help';
+
+        };
+        this.small 			= function(){
+
+            if( document.querySelector('.small') )
+                document.body.className = '';
+            else
+                document.body.className = 'small';
+
+        };
+
+    }
+    var datGUI = new dat.GUI();
+    //j'ajoute a mon ui les variable
+    datGUI.add( guiControls, 'help' );
+    datGUI.add( guiControls, 'small' );
+</script>
+
+<div id="atome">
+
+    <div class="w--atome">
+        <div class="w--atome-spine">
+            <div class="w--atome-line lineX"></div>
+            <div class="w--atome-line lineY"></div>
+        </div>
+    </div>
+
+    <div class="w--atome-circle circle1"></div>
+    <div class="w--atome-circle circle2"></div>
+    <div class="w--atome-circle circle3"></div>
+    <div class="w--atome-circle circle4"></div>
+
+    <div class="w--atome-help">
+        <div class="w--atome-line lineX"></div>
+        <div class="w--atome-line lineY"></div>
+    </div>
+
+</div>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+    </defs>
+</svg>

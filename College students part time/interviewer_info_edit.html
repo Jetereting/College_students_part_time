@@ -9,17 +9,148 @@
     <link rel="apple-touch-icon" href="http://eiyou.us/images/icon.png"/>
     <!--网页小图标end-->
     <title>招聘者信息编辑</title>
+    <link rel="stylesheet" href="css/Au.css" type="text/css">
     <style>
-        @import "css/Au.css";
+
+        info {
+            position: absolute;
+            top: 0;
+        }
+
+        line > div {
+            text-align: left;
+            margin-left: 13%;
+        }
+
+        shopImage {
+            position: absolute;
+            width: 70%;
+            height: 200px;
+            margin-left: 15%;
+            margin-top: 15px;
+            border-radius: 27px;
+            background: url(images/avatar.jpg) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        shopImageEdit, input[type= 'file'] {
+            position: absolute;
+            width: 100%;
+            height: 250px;
+            background: url(images/shopImageEdit.png) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        input[type='file'] {
+            opacity: 0;
+        }
+
+        /*电脑屏幕*/
+        @media (orientation: landscape) {
+            info {
+                position: absolute;
+                top: 7%;
+                left: 57%;
+                width: 30%;
+            }
+        }
     </style>
     <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/Au.js"></script>
     <script>
+        //
+        <!-- 提交检测-->
+        function check() {
+            if ($("input[name='name']").val() == "") {
+                notie.alert(2, "商户名不能为空", 1);
+                $("input[name='name']").focus();
+                return false;
+            } else if ($("input[name='phone']").val() == "") {
+                notie.alert(2, "手机号不能为空", 1);
+                $("input[name='phone']").focus();
+                return false;
+            } else if ($("input[name='loc']").val() == "") {
+                notie.alert(2, "手机号不能为空");
+                $("input[name='loc']", 1).focus();
+                return false;
+            }else{
+                return true;
+            }
+        }
         $(document).ready(function () {
+//            显示商户图片
+            $("shopImage").css({
+                "background": "url(images/avatar.jpg) no-repeat center",
+                "background-size": "100% 100%"
+            });
+//            返回按钮
+            $("back").click(function(){
+                window.history.back();
+            });
 
-        })
+        });
     </script>
 </head>
 <body>
+<nav>
+    <project_title>
+        大学生兼职
+    </project_title>
 
+    <title>
+        用户信息
+    </title>
+
+    <back>
+
+    </back>
+</nav>
+<iframe class="computer" src="html/tree.html" frameBorder="0" scrolling="no"
+        style="position: fixed; top:9%; left: 7%; width: 650px; height:630px"></iframe>
+
+<info>
+    <form action="" onsubmit="return check()">
+        <line>
+            <shopImage id="avatar"></shopImage>
+            <shopImageEdit></shopImageEdit>
+            <input type="file" onchange="previewImage(this,300,210)">
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>商家名：<input name="name" type="text" value="小么哥"></div>
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>手机号：<input name="phone" type="text" value="88881234"></div>
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>位&nbsp;置：<input name="loc" type="text" value="山东阿斯达克"></div>
+        </line>
+
+        <line>
+            <div>&nbsp;</div>
+            <div style="text-align: center"><input type="submit" value="保存修改"></div>
+        </line>
+    </form>
+</info>
+<script src="js/notie.js"></script>
 </body>
 </html>

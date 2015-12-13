@@ -10,11 +10,17 @@
     <!--网页小图标end-->
     <title>应聘者信息</title>
     <link rel="stylesheet" href="css/Au.css" type="text/css">
+    <link rel="stylesheet" href="css/school_search.css" type="text/css">
     <style>
 
         info {
             position: absolute;
             top: 0;
+        }
+
+        .search {
+            position: absolute;
+            top: 15%;
         }
 
         line > div {
@@ -32,7 +38,8 @@
             background: url(images/avatar.jpg) no-repeat center;
             background-size: 100% 100%;
         }
-        avatarEdit{
+
+        avatarEdit, input[type= 'file'] {
             position: absolute;
             left: 45%;
             top: 5%;
@@ -42,7 +49,11 @@
             background-size: 100% 100%;
         }
 
-        #verifyCodeBtn{
+        input[type='file'] {
+            opacity: 0;
+        }
+
+        #verifyCodeBtn {
             background: tan;
             border: 1px solid #e6ff00;
         }
@@ -51,13 +62,25 @@
         @media (orientation: landscape) {
             info {
                 position: absolute;
+                top: 4%;
                 left: 57%;
                 width: 30%;
             }
         }
     </style>
+    <script src="js/Au.js"></script>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script>
+        //            提交初检测
+        function check() {
+            if ($("input[name='verifyCode']").val() == null || $("input[name='verifyCode']").val() == "") {
+                notie.alert(2,"请输入验证码",1);
+                $("input[name='verifyCode']").focus();
+                return false;
+            } else {
+                return true;
+            }
+        }
         $(document).ready(function () {
 //            显示用户头像
             $("avatar").css({"background": "url(images/avatar.jpg) no-repeat center", "background-size": "100% 100%"});
@@ -66,7 +89,30 @@
                 "background": " url(images/boy.png) no-repeat center",
                 "background-size": "100% 100%",
                 "left": "calc(14% + " + ($("name").width() + 52) + "px)"
-            })
+            });
+//            搜索学校
+            $(".search").hide();
+            $("input[name='school']").click(function () {
+                $("line").hide();
+                $(".search").show();
+                $("title").text("选择学校");
+            });
+            $("button[type='reset']").click(function () {
+                $(".inputbox>input").val("");
+            });
+            $("#select").bind("propertychange input", function () {
+                $("label").hide().filter(":contains('" + $("#select").val() + "')").show();
+            });
+            $("input[name=school_select]").bind("click", function () {
+                $(".search").hide();
+                $("line").show();
+                $("title").text("用户信息");
+                $("input[name='school']").val($("input[name=school_select]:checked").val());
+            });
+//            返回按钮
+            $("back").click(function(){
+                window.history.back();
+            });
         });
     </script>
 </head>
@@ -80,60 +126,87 @@
         用户信息
     </title>
 
+    <back>
+    </back>
+
 </nav>
-<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+<iframe class="computer" src="html/computer_eye.html" frameBorder="0" scrolling="no"
         style="position: fixed; top:9%; left: 7%; width: 650px; height:630px"></iframe>
-
 <info>
-    <line>
-        <avatar></avatar>
-        <avatarEdit></avatarEdit>
-    </line>
-    <hr>
-    <line>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-    </line>
-    <line>
-        <div>&nbsp;</div>
-        <div>昵&nbsp;&nbsp;称：<input type="text" placeholder="起个好听点的名字"></div>
-    </line>
-    <line>
-        <div>&nbsp;</div>
-        <div>性&nbsp;&nbsp;别：<select name="sex">
-            <option value="0">-------------------男-----------------</option>
-            <option value="1">-------------------女-----------------</option>
-        </select></div>
-    </line>
-    <line>
-        <div>&nbsp;</div>
-        <div>学&nbsp;&nbsp;校：<input type="text" placeholder="点击选择"></div>
-    </line>
+    <form action="" onsubmit="return check()" name="form">
+        <line>
+            <avatar id="avatar"></avatar>
+            <avatarEdit></avatarEdit>
+            <input type="file" onchange="previewImage(this,50,50)">
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>昵&nbsp;称：<input name="name" type="text" value="Au"></div>
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>性&nbsp;别：<select name="sex">
+                <option value="0">-------------------男-----------------</option>
+                <option value="1">-------------------女-----------------</option>
+            </select></div>
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>学&nbsp;校：<input name="school" type="text" value="青岛科技小学"></div>
+        </line>
 
 
-    <line>
-        <div>&nbsp;</div>
-        <div>学&nbsp;&nbsp;号：<input type="text" placeholder="大学的学号"></div>
-    </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>学&nbsp;号：<input type="text" value="1408620222"></div>
+        </line>
 
-    <line>
-        <div>&nbsp;</div>
-        <div>手机&nbsp;号：<input type="text" placeholder="常用手机号"></div>
-    </line>
-    <line>
-        <div>&nbsp;</div>
-        <div>验证&nbsp;码：<input id="verifyCode" type="text" style="width: 100px"><input id="verifyCodeBtn" type="button" value="获取验证码">
+        <line>
+            <div>&nbsp;</div>
+            <div>手机号：<input name="phone" type="text" value="17096241774"></div>
+        </line>
+        <line>
+            <div>&nbsp;</div>
+            <div>验证码：<input name="verifyCode" type="text" style="width: 100px"><input id="verifyCodeBtn"
+                                                                                      type="button"
+                                                                                      value="获取验证码">
+            </div>
+        </line>
+
+        <line>
+            <div>&nbsp;</div>
+            <div style="text-align: center"><input type="submit" value="保存修改"></div>
+            <div>&nbsp;</div>
+        </line>
+    </form>
+
+    <!--选择学校-->
+    <div class="search">
+        <div class="inputbox">
+            <input id="select" required="required"/>
+            <button type="reset" class="del"></button>
         </div>
-    </line>
-
-    <line>
-        <div>&nbsp;</div>
-        <div style="text-align: center"><input type="button" value="保存修改"></div>
-        <div>&nbsp;</div>
-    </line>
+        <div class="list">
+            <label><input type="radio" name="school_select" value="青岛科技大学">青岛科技大学</label>
+            <label><input type="radio" name="school_select" value="青岛科技小学">青岛科技小学</label>
+            <label><input type="radio" name="school_select" value="青岛科技幼儿园">青岛科技幼儿园</label>
+            <label><input type="radio" name="school_select" value="青岛科技托儿所">青岛科技托儿所</label>
+            <label><input type="radio" name="school_select" value="青岛科技育儿所">青岛科技育儿所</label>
+            <label><input type="radio" name="school_select" value="青岛科技大学">青岛科技大学</label>
+            <label><input type="radio" name="school_select" value="青岛科技大学">青岛科技大学</label>
+            <label><input type="radio" name="school_select" value="青岛科技大学">青岛科技大学</label>
+        </div>
+    </div>
 </info>
+<script src="js/notie.js"></script>
+
 </body>
 </html>

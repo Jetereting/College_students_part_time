@@ -13,15 +13,12 @@
     <link rel="stylesheet" href="css/Au.css" type="text/css">
     <link rel="stylesheet" href="css/school_search.css">
     <style>
-        nav{
+        nav {
             position: static;
         }
+
         /*电脑屏幕*/
         @media (orientation: landscape) {
-            nav {
-                background: rgba(186, 134, 49, 1);
-            }
-
             form {
                 position: absolute;
                 top: 15%;
@@ -38,11 +35,12 @@
 
         /*手机屏幕*/
         @media (orientation: portrait) {
-            #sign_in{
+            #sign_in {
                 display: block;
                 transform: translate(-12%, 0);
             }
-            input[value="注册"]{
+
+            input[value="注册"] {
                 transform: translate(-23%, 0);
             }
         }
@@ -50,89 +48,100 @@
     </style>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script>
-//        <%--输入初检测--%>
+        //        <%--输入初检测--%>
         function check() {
+//            总的
             if ($("input[name='name']").val() == null || $("input[name='name']").val() == "") {
-                alert("用户名不能为空！");
+                notie.alert(2, "用户名不能为空！", 1);
                 $("input[name='name']").focus();
                 return false;
             } else if ($("input[name='password']").val() == null || $("input[name='password']").val() == "") {
-                alert("密码不能为空！");
+                notie.alert(2, "密码不能为空！", 1);
                 $("input[name='password']").focus();
                 return false;
             } else if ($("input[name='re_password']").val() != $("input[name='password']").val()) {
-                alert("两次密码输入不一致！");
+                notie.alert(2, "两次密码输入不一致！", 1);
                 $("input[name='password']").focus();
                 return false;
             } else if ($("input[name='phone']").val().length != 11) {
-                alert("手机号格式不正确！");
+                notie.alert(2, "手机号格式不正确！", 1);
                 $("input[name='phone']").focus();
                 return false;
             } else if ($("select[name='who']").val() == "null") {
-                alert("请选择类型！");
+                notie.alert(2, "请选择类型！", 1);
                 $("input[name='who']").focus();
                 return false;
-            } else if ($("select[name='who']").val() == "interviewee" && $("input[name='id']").val().length != 15 && $("input[name='id']").val().length != 18) {
-                alert("身份证号不正确！");
-                $("input[name='id']").focus();
-                return false;
-            } else if ($("select[name='who']").val() == "interviewee" && $("input[name='school']").val() == null || $("input[name='school']").val() == "") {
-                alert("学校未选择");
-                $("input[name='school']").focus();
-                return false;
-            } else if ($("select[name='who']").val() == "interviewee" && $("input[name='school_id']").val() == null || $("input[name='school_id']").val() == "") {
-                alert("学号未填写");
-                $("input[name='school_id']").focus();
-                return false;
-            } else if ($("select[name='who']").val() == "interviewer" && $("input[name='business_no").val() == null || $("input[name='business_no").val() == "") {
-                alert("工商账号不能为空");
-                $("input[name='business_no']").focus();
-                return false;
-            } else {
-                return true;
+            }
+//            兼职者检测
+            if ($("select[name='who']").val() == "interviewee") {
+                if ($("select[name='who']").val() == "interviewee" && $("input[name='id']").val().length != 15 && $("input[name='id']").val().length != 18) {
+                    notie.alert(2, "身份证号不正确！", 1);
+                    $("input[name='id']").focus();
+                    return false;
+                } else if ($("select[name='who']").val() == "interviewee" && $("input[name='school']").val() == null || $("input[name='school']").val() == "") {
+                    notie.alert(2, "学校未选择", 1);
+                    $("input[name='school']").focus();
+                    return false;
+                } else if ($("select[name='who']").val() == "interviewee" && $("input[name='school_id']").val() == null || $("input[name='school_id']").val() == "") {
+                    notie.alert(2, "学号未填写", 1);
+                    $("input[name='school_id']").focus();
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+//            招聘者检测
+            else {
+                if ($("select[name='who']").val() == "interviewer" && $("input[name='business_no").val() == null || $("input[name='business_no").val() == "") {
+                    notie.alert(2, "工商账号不能为空", 1);
+                    $("input[name='business_no']").focus();
+                    return false;
+                }else{
+                    return true;
+                }
             }
         }
-        $(document).ready(function () {
-            $(".search").hide();
-//            确定招聘者还是应聘者
-            $(".interviewee").hide();
-            $(".interviewer").hide();
-            $("select[name='who']").click(function () {
-                if ($("select[name='who']").val() == "interviewee") {
-                    $(".interviewee").show();
-                    $(".interviewer").hide();
-                    //      form提交
-                    document.form.action = "<%=request.getContextPath()%>/servlet/IntervieweeSignUpAction"
-                } else if ($("select[name='who']").val() == "interviewer") {
-                    $(".interviewer").show();
-                    $(".interviewee").hide();
-                    //      form提交
-                    document.form.action = "<%=request.getContextPath()%>/servlet/InterviewerSignUpAction"
-                } else {
-                    $(".interviewer").hide();
-                    $(".interviewee").hide();
-                }
-            });
-            $("input[name='school']").click(function () {
-                $("form").hide();
-                $(".search").show();
-                $("title").text("选择学校");
-            });
-
-            $("button[type='reset']").click(function () {
-                $(".inputbox>input").val("");
-            });
-
-            $("#select").bind("propertychange input", function () {
-                $("label").hide().filter(":contains('" + $("#select").val() + "')").show();
-            });
-            $("input[name=school_select]").bind("click", function () {
+            $(document).ready(function () {
                 $(".search").hide();
-                $("form").show();
-                $("title").text("用户注册");
-                $("input[name='school']").val($("input[name=school_select]:checked").val());
+//            确定招聘者还是应聘者
+                $(".interviewee").hide();
+                $(".interviewer").hide();
+                $("select[name='who']").click(function () {
+                    if ($("select[name='who']").val() == "interviewee") {
+                        $(".interviewee").show();
+                        $(".interviewer").hide();
+                        //      form提交
+                        document.form.action = "sign_in.html"
+                    } else if ($("select[name='who']").val() == "interviewer") {
+                        $(".interviewer").show();
+                        $(".interviewee").hide();
+                        //      form提交
+                        document.form.action = "sign_in.html"
+                    } else {
+                        $(".interviewer").hide();
+                        $(".interviewee").hide();
+                    }
+                });
+                $("input[name='school']").click(function () {
+                    $("form").hide();
+                    $(".search").show();
+                    $("title").text("选择学校");
+                });
+
+                $("button[type='reset']").click(function () {
+                    $(".inputbox>input").val("");
+                });
+
+                $("#select").bind("propertychange input", function () {
+                    $("label").hide().filter(":contains('" + $("#select").val() + "')").show();
+                });
+                $("input[name=school_select]").bind("click", function () {
+                    $(".search").hide();
+                    $("form").show();
+                    $("title").text("用户注册");
+                    $("input[name='school']").val($("input[name=school_select]:checked").val());
+                });
             });
-        });
     </script>
 </head>
 <body>
@@ -144,7 +153,7 @@
         用户注册
     </title>
 </nav>
-<iframe class="computer" src="computer_eye.html" frameBorder="0" scrolling="no"
+<iframe class="computer" src="html/computer_eye.html" frameBorder="0" scrolling="no"
         style="position: absolute; left: 7%; width: 650px; height:630px"></iframe>
 <form action="" method="post" style="margin: 4%;line-height: 33px;" name="form" onsubmit="return check();">
     <table style="display: inline-table">
@@ -268,6 +277,6 @@
         <label><input type="radio" name="school_select" value="青岛科技大学">青岛科技大学</label>
     </div>
 </div>
-
+<script src="js/notie.js"></script>
 </body>
 </html>
